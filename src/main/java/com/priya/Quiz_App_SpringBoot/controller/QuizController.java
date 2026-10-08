@@ -5,7 +5,6 @@ import com.priya.Quiz_App_SpringBoot.model.QuestionWrapper;
 import com.priya.Quiz_App_SpringBoot.model.Response;
 import com.priya.Quiz_App_SpringBoot.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,8 +33,11 @@ public class QuizController {
     }
 
     //from the response of user checking the results...
-    @GetMapping("/submit/{id}")
+//    @GetMapping("/submit/{id}")
+    @PostMapping("/submit/{id}")
     public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses){
         return quizService.calculateResult(id, responses);
     }
+
+
 }
